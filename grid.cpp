@@ -17,7 +17,8 @@
 #define ROWS_GRID 1000//1000
 #define COLS_GRID 1780//1560
 #define CIRCLE_RAD 20
-#define HD 1
+#define HD 0
+#define FULL_HD 1
 #define IM_WIDTH_VGA 640
 #define IM_HEIGHT_VGA 480
 #define IM_WIDTH_HD 1280
@@ -90,7 +91,10 @@ int main(int argc, char **argv)
       return -1;
     }
         cout<<"Se abrió la cámara"<<endl;
-    #if HD
+    #if FULL_HD
+    capture.set(CV_CAP_PROP_FRAME_WIDTH,1920);
+    capture.set(CV_CAP_PROP_FRAME_HEIGHT, 1080);
+    #elif HD
     capture.set(CV_CAP_PROP_FRAME_WIDTH,1280);
     capture.set(CV_CAP_PROP_FRAME_HEIGHT,720);
     #else
